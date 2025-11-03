@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>VerdeVivo - ONG Ambiental (Demo)</title>
-  <link rel="stylesheet" href="src/css/main.css">
+  <title>VerdeVivo - ONG Ambiental</title>
+  <link rel="stylesheet" href="./src/css/main.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Ir para o conteúdo</a>
@@ -26,6 +26,7 @@
             <ul class="submenu" role="menu" aria-label="Projetos submenu">
               <li role="none"><a role="menuitem" href="#/projetos/reflorestamento">Reflorestamento</a></li>
               <li role="none"><a role="menuitem" href="#/projetos/educacao">Educação Ambiental</a></li>
+              <li role="none"><a role="menuitem" href="#/projetos/limpeza">Limpeza de Rios</a></li>
             </ul>
           </li>
           <li role="none"><a role="menuitem" href="#/voluntario">Seja Voluntário</a></li>
@@ -115,6 +116,12 @@
   <!-- Toast area -->
   <div id="toast-area" aria-live="polite" aria-atomic="true"></div>
 
-  <script src="src/js/app.js" defer></script>
+  <!-- JS -->
+  <script src="./src/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof router === 'function') router();
+    });
+  </script>
 </body>
 </html>
