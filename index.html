@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VerdeVivo - ONG Ambiental (Demo)</title>
+  <link rel="stylesheet" href="src/css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+
+  <header class="site-header" role="banner">
+    <div class="container nav-inner">
+      <a class="brand" href="#/">VerdeVivo</a>
+
+      <button id="btn-burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu">
+        <span class="burger-box"><span class="burger-inner"></span></span>
+      </button>
+
+      <nav id="nav-menu" class="nav-menu" role="navigation" aria-label="Menu principal">
+        <ul role="menubar">
+          <li role="none"><a role="menuitem" href="#/">Início</a></li>
+          <li role="none"><a role="menuitem" href="#/sobre">Sobre</a></li>
+          <li role="none" class="has-submenu">
+            <button aria-haspopup="true" aria-expanded="false">Projetos</button>
+            <ul class="submenu" role="menu" aria-label="Projetos submenu">
+              <li role="none"><a role="menuitem" href="#/projetos/reflorestamento">Reflorestamento</a></li>
+              <li role="none"><a role="menuitem" href="#/projetos/educacao">Educação Ambiental</a></li>
+            </ul>
+          </li>
+          <li role="none"><a role="menuitem" href="#/voluntario">Seja Voluntário</a></li>
+          <li role="none"><a role="menuitem" href="#/contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container" role="main">
+    <div id="app" tabindex="-1"></div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>© VerdeVivo - ONG Ambiental</p>
+    </div>
+  </footer>
+
+  <!-- Templates -->
+  <script type="text/template" id="tpl-home">
+    <section class="hero">
+      <h1>Protegendo a Natureza, Juntos</h1>
+      <p>Projetos de reflorestamento, educação e ação comunitária.</p>
+    </section>
+
+    <section class="grid grid--projects">
+      {{#cards}}
+      <article class="card">
+        <img src="{{img}}" alt="{{title}}">
+        <div class="card-body">
+          <h3>{{title}}</h3>
+          <p>{{excerpt}}</p>
+          <div class="card-footer">
+            <span class="badge">{{badge}}</span>
+            <a class="btn" href="#/projetos/{{id}}">Saiba mais</a>
+          </div>
+        </div>
+      </article>
+      {{/cards}}
+    </section>
+  </script>
+
+  <script type="text/template" id="tpl-projeto">
+    <article class="project">
+      <h2>{{title}}</h2>
+      <img src="{{img}}" alt="{{title}}">
+      <p>{{body}}</p>
+      <button class="btn" data-open-modal="donate-modal">Quero ajudar</button>
+    </article>
+  </script>
+
+  <script type="text/template" id="tpl-voluntario">
+    <section>
+      <h2>Seja Voluntário</h2>
+      <form id="volunteer-form" novalidate>
+        <label for="name">Nome</label>
+        <input id="name" name="name" required minlength="2" />
+        <div class="field-msg" aria-live="polite"></div>
+
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" required />
+        <div class="field-msg" aria-live="polite"></div>
+
+        <label><input type="checkbox" name="hasCar" id="hasCar"> Tenho carro disponível</label>
+        <div class="field-msg" aria-live="polite"></div>
+
+        <label for="plate">Placa (se aplicável)</label>
+        <input id="plate" name="plate" />
+        <div class="field-msg" aria-live="polite"></div>
+
+        <button class="btn" type="submit">Enviar</button>
+      </form>
+    </section>
+  </script>
+
+  <!-- Modal -->
+  <div id="donate-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+    <div class="modal-content" role="document">
+      <button class="modal-close" aria-label="Fechar">&times;</button>
+      <h3>Contribua com o projeto</h3>
+      <p>Ajude com doações ou voluntariado local.</p>
+      <button class="btn modal-confirm">Quero doar</button>
+    </div>
+  </div>
+
+  <!-- Toast area -->
+  <div id="toast-area" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="src/js/app.js" defer></script>
+</body>
+</html>
