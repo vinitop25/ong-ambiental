@@ -1,12 +1,19 @@
+<<<<<<< Updated upstream
 /* === RESET & BASE === */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
 img { max-width: 100%; display: block; }
 button, input, select, textarea { font: inherit; }
+=======
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+img { max-width: 100%; display: block; }
+button, input { font: inherit; }
+>>>>>>> Stashed changes
 
 :root {
   --brand: #1a7a37;
   --brand-dark: #145c2a;
+<<<<<<< Updated upstream
   --brand-light: #e6f7ea;
   --accent: #34c759;
   --success: #34c759;
@@ -20,6 +27,15 @@ button, input, select, textarea { font: inherit; }
   --border: #e0e0e0;
   --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
   --shadow-md: 0 8px 25px rgba(0,0,0,0.12);
+=======
+  --accent: #34c759;
+  --bg: #fafafa;
+  --surface: #fff;
+  --text: #1a1a1a;
+  --muted: #777;
+  --border: #e0e0e0;
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
+>>>>>>> Stashed changes
   --radius: 12px;
   --transition: all 0.25s ease;
 }
@@ -30,6 +46,7 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+<<<<<<< Updated upstream
   -webkit-font-smoothing: antialiased;
 }
 
@@ -125,8 +142,71 @@ h3 { font-size: 1.5rem; }
   border-radius: 2px;
   position: absolute;
   transition: var(--transition);
+=======
 }
 
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+.section { padding: 3rem 0; }
+.section-title { text-align: center; margin-bottom: 2rem; color: var(--brand); }
+
+/* HEADER */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; }
+.brand img { height: 32px; width: auto; }
+
+/* NAV */
+.nav-menu ul { display: flex; gap: 1.5rem; list-style: none; }
+.nav-menu a { color: var(--text); text-decoration: none; font-weight: 500; }
+.nav-menu a:hover { color: var(--brand); }
+
+/* HAMBURGER */
+#btn-burger {
+  display: none; background: none; border: 0; cursor: pointer; padding: 0.5rem;
+}
+.burger-inner, .burger-inner::before, .burger-inner::after {
+  background: var(--text); width: 24px; height: 2px; border-radius: 2px; position: absolute; transition: var(--transition);
+}
+.burger-inner::before, .burger-inner::after { content: ""; left: 0; }
+.burger-inner::before { top: -7px; }
+.burger-inner::after { bottom: -7px; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  #btn-burger { display: block; }
+  .nav-menu {
+    position: absolute; top: 100%; right: 1rem; background: var(--surface);
+    border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 1rem;
+    opacity: 0; visibility: hidden; transform: translateY(-10px); transition: var(--transition);
+  }
+  .nav-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-menu ul { flex-direction: column; gap: 0.5rem; }
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('../assets/images/hero.jpg') center/cover;
+  color: white; text-align: center; padding: 5rem 1rem; border-radius: 0 0 var(--radius) var(--radius);
+}
+.highlight { color: var(--accent); }
+
+/* BUTTONS */
+.btn {
+  display: inline-block; padding: 0.65rem 1.2rem; border-radius: 8px; font-weight: 600;
+  text-decoration: none; cursor: pointer; transition: var(--transition); border: 2px solid transparent;
+>>>>>>> Stashed changes
+}
+.btn-primary { background: var(--brand); color: white; }
+.btn-primary:hover { background: var(--brand-dark); }
+.btn-outline { border-color: var(--brand); color: var(--brand); }
+.btn-outline:hover { background: #e6f7ea; }
+.btn-small { padding: 0.4rem 0.8rem; font-size: 0.9rem; }
+
+<<<<<<< Updated upstream
 .burger-inner::before,
 .burger-inner::after {
   content: "";
@@ -387,4 +467,15 @@ h3 { font-size: 1.5rem; }
 }
 .skip-link:focus {
   top: 0;
+=======
+/* FOOTER */
+.site-footer { background: var(--brand-dark); color: white; text-align: center; padding: 2rem 0; margin-top: 3rem; }
+.footer-tagline { font-style: italic; opacity: 0.9; }
+
+/* SKIP LINK */
+.skip-link {
+  position: absolute; top: -40px; left: 6px; background: var(--brand); color: white;
+  padding: 8px; border-radius: 0 0 4px 4px; z-index: 100; transition: top 0.3s;
+>>>>>>> Stashed changes
 }
+.skip-link:focus { top: 0; }

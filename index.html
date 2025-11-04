@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<<<<<<< Updated upstream
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Beto Verde - ONG ambiental liderada por Beto, dedicada ao reflorestamento, educação e limpeza de rios." />
@@ -8,6 +9,15 @@
   <link rel="stylesheet" href="./src/css/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+=======
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Beto Verde - ONG ambiental dedicada ao reflorestamento, educação e limpeza de rios." />
+  <title>Beto Verde - ONG Ambiental</title>
+  <link rel="stylesheet" href="./src/css/main.css" />
+  <link rel="stylesheet" href="./src/css/grid.css" />
+  <link rel="stylesheet" href="./src/css/components.css" />
+>>>>>>> Stashed changes
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -16,7 +26,11 @@
   <header class="site-header" role="banner">
     <div class="container nav-inner">
       <a class="brand" href="#/" aria-label="Beto Verde - Início">
+<<<<<<< Updated upstream
         <strong>Beto</strong><span class="brand-light">Verde</span>
+=======
+        <img src="./src/assets/images/logo.png" alt="Logo Beto Verde" width="120">
+>>>>>>> Stashed changes
       </a>
 
       <!-- HAMBÚRGUER VISÍVEL -->
@@ -45,7 +59,11 @@
 
   <footer class="site-footer" role="contentinfo">
     <div class="container">
+<<<<<<< Updated upstream
       <p>© <span id="current-year"></span> Beto Verde - ONG Ambiental. Todos os direitos reservados.</p>
+=======
+      <p>© <span id="current-year"></span> Beto Verde - ONG Ambiental</p>
+>>>>>>> Stashed changes
       <p class="footer-tagline">Com Beto, a natureza tem voz.</p>
     </div>
   </footer>
@@ -62,6 +80,7 @@
 
     <section class="section">
       <h2 class="section-title">Nossos Projetos</h2>
+<<<<<<< Updated upstream
       <div class="grid grid--projects">
         {{#cards}}
         <article class="card card--project">
@@ -77,6 +96,9 @@
         </article>
         {{/cards}}
       </div>
+=======
+      <div class="grid grid--projects" id="projects-grid"></div>
+>>>>>>> Stashed changes
     </section>
   </script>
 
@@ -102,6 +124,7 @@
         <div class="form-group">
           <label for="name">Nome completo *</label>
           <input id="name" name="name" type="text" required minlength="2" />
+<<<<<<< Updated upstream
           <div class="field-msg"></div>
         </div>
 
@@ -124,17 +147,61 @@
           <div class="field-msg"></div>
         </div>
 
+=======
+          <div class="field-msg" aria-live="polite"></div>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail *</label>
+          <input id="email" name="email" type="email" required />
+          <div class="field-msg" aria-live="polite"></div>
+        </div>
+        <div class="form-group checkbox">
+          <label><input type="checkbox" name="hasCar" id="hasCar"> Tenho carro disponível</label>
+        </div>
+        <div class="form-group" id="plate-group" style="display:none;">
+          <label for="plate">Placa do veículo</p>
+          <input1nput id="plate" name="plate" type="text" placeholder="ABC-1234" />
+          <div class="field-msg" aria-live="polite"></div>
+        </div>
+>>>>>>> Stashed changes
         <button type="submit" class="btn btn-primary btn-lg">Enviar cadastro</button>
       </form>
     </section>
   </script>
 
+<<<<<<< Updated upstream
   <!-- MODAL -->
   <div id="donate-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
     <div class="modal-content" role="document">
       <button class="modal-close" aria-label="Fechar modal">×</button>
       <h3>Contribua com o projeto</h3>
       <p>Ajude com doações ou voluntariado local. Todo apoio conta!</p>
+=======
+  <script type="text/template" id="tpl-contato">
+    <section class="section contact-section">
+      <h2 class="section-title">Fale com Beto</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <p>Entre em contato com nosso fundador:</p>
+          <p class="contact-phone"><strong>Telefone:</strong> 11 98048-4344</p>
+          <p><a href="mailto:contato@betoverde.org" class="btn btn-outline">Enviar e-mail</a></p>
+        </div>
+        <div class="contact-card">
+          <img src="./src/assets/images/beto.jpg" alt="Roberto Oliveira" class="contact-avatar">
+          <h3>Beto</h3>
+          <p>Fundador & Coordenador</p>
+        </div>
+      </div>
+    </section>
+  </script>
+
+  <!-- Modal -->
+  <div id="donate-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+    <div class="modal-content" role="document">
+      <button class="modal-close" aria-label="Fechar">×</button>
+      <h3>Contribua com o projeto</h3>
+      <p>Ajude com doações ou voluntariado local.</p>
+>>>>>>> Stashed changes
       <div class="modal-actions">
         <button class="btn btn-primary modal-confirm">Quero doar</button>
         <a href="#/voluntario" class="btn btn-outline">Ser voluntário</a>
@@ -142,6 +209,7 @@
     </div>
   </div>
 
+<<<<<<< Updated upstream
   <!-- TOAST -->
   <div id="toast-area" aria-live="polite" aria-atomic="true"></div>
 
@@ -152,6 +220,15 @@
     document.addEventListener('DOMContentLoaded', () => {
       if (typeof router === 'function') router();
     });
+=======
+  <!-- Toast -->
+  <div id="toast-area" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="./src/js/router.js"></script>
+  <script src="./src/js/app.js"></script>
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+>>>>>>> Stashed changes
   </script>
 </body>
 </html>
