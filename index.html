@@ -18,23 +18,20 @@
       <a class="brand" href="#/" aria-label="Beto Verde - Início">
         <strong>Beto</strong><span class="brand-light">Verde</span>
       </a>
+
+      <!-- HAMBÚRGUER VISÍVEL -->
       <button id="btn-burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu">
         <span class="burger-box">
           <span class="burger-inner"></span>
         </span>
       </button>
+
+      <!-- MENU SEM SUBMENU -->
       <nav id="nav-menu" class="nav-menu" role="navigation" aria-label="Menu principal">
         <ul role="menubar">
           <li role="none"><a role="menuitem" href="#/">Início</a></li>
           <li role="none"><a role="menuitem" href="#/sobre">Sobre</a></li>
-          <li role="none" class="has-submenu">
-            <button aria-haspopup="true" aria-expanded="false" class="submenu-toggle">Projetos</button>
-            <ul class="submenu" role="menu" aria-label="Submenu de projetos">
-              <li role="none"><a role="menuitem" href="#/projetos/reflorestamento">Reflorestamento</a></li>
-              <li role="none"><a role="menuitem" href="#/projetos/educacao">Educação Ambiental</a></li>
-              <li role="none"><a role="menuitem" href="#/projetos/limpeza">Limpeza de Rios</a></li>
-            </ul>
-          </li>
+          <li role="none"><a role="menuitem" href="#/projetos">Projetos</a></li>
           <li role="none"><a role="menuitem" href="#/voluntario">Seja Voluntário</a></li>
           <li role="none"><a role="menuitem" href="#/contato">Contato</a></li>
         </ul>
@@ -53,7 +50,7 @@
     </div>
   </footer>
 
-  <!-- Templates -->
+  <!-- TEMPLATES -->
   <script type="text/template" id="tpl-home">
     <section class="hero">
       <div class="hero-content">
@@ -71,7 +68,7 @@
           <img src="{{img}}" alt="{{title}}" loading="lazy">
           <div class="card-body">
             <h3>{{title}}</h3>
-            <p>{{excerpt}}</p>
+            <p>{{colorexcerpt}}</p>
             <div class="card-footer">
               <span class="badge badge--{{badgeClass}}">{{badge}}</span>
               <a class="btn btn-small" href="#/projetos/{{id}}">Saiba mais</a>
@@ -132,7 +129,7 @@
     </section>
   </script>
 
-  <!-- Modal -->
+  <!-- MODAL -->
   <div id="donate-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
     <div class="modal-content" role="document">
       <button class="modal-close" aria-label="Fechar modal">×</button>
@@ -145,7 +142,7 @@
     </div>
   </div>
 
-  <!-- Toast area -->
+  <!-- TOAST -->
   <div id="toast-area" aria-live="polite" aria-atomic="true"></div>
 
   <!-- JS -->
