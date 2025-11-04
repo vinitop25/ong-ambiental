@@ -22,6 +22,27 @@ function router() {
     const id = path.split('/')[2];
     const proj = PROJECTS.find(p => p.id === id) || PROJECTS[0];
     html = renderTemplate('tpl-projeto', proj);
+  } else if (path === '/projetos') {
+    const cards = PROJECTS.map(p => `
+      <article class="card card--project">
+        <img src="${p.img}" alt="${p.title}" loading="lazy">
+        <div class="card-body">
+          <h3>${p.title}</h3>
+          <p>${p.excerpt}</p>
+          <div class="card-footer">
+            <span class="badge badge--${p.badgeClass}">${p.badge}</span>
+            <a class="btn btn-small" href="#/projetos/${p.id}">Ver detalhes</a>
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    html = `
+      <section class="section">
+        <h1 class="section-title">Todos os Projetos</h1>
+        <div class="grid grid--projects">${cards}</div>
+      </section>
+    `;
   } else if (path === '/voluntario') {
     html = renderTemplate('tpl-voluntario');
     setTimeout(attachVolunteerForm, 100);
@@ -67,7 +88,6 @@ function renderTemplate(id, data = {}) {
 
 // --- UI Handlers ---
 function attachUIHandlers() {
-  // Burger menu
   const burger = document.getElementById('btn-burger');
   const nav = document.getElementById('nav-menu');
   if (burger && nav) {
@@ -77,7 +97,6 @@ function attachUIHandlers() {
     };
   }
 
-  // Modal
   document.querySelectorAll('[data-open-modal]').forEach(btn => {
     btn.onclick = () => openModal(document.getElementById(btn.dataset.openModal));
   });
@@ -86,14 +105,6 @@ function attachUIHandlers() {
       if (e.target === el || el.classList.contains('modal-close')) {
         closeModal(el.closest('.modal') || el);
       }
-    };
-  });
-
-  // Submenu mobile
-  document.querySelectorAll('.submenu-toggle').forEach(toggle => {
-    toggle.onclick = () => {
-      const submenu = toggle.nextElementSibling;
-      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
     };
   });
 }
@@ -111,7 +122,7 @@ function closeModal(modal) {
 }
 
 // --- Toast ---
-function showToast(msg, type = 'success') {
+function showToast(msg) {
   const area = document.getElementById('toast-area');
   const toast = document.createElement('div');
   toast.className = 'toast';
@@ -138,7 +149,6 @@ function attachVolunteerForm() {
     const name = form.name.value.trim();
     const email = form.email.value.trim();
 
-    // Reset messages
     form.querySelectorAll('.field-msg').forEach(m => m.textContent = '');
 
     if (!name || name.length < 2) {
@@ -151,7 +161,7 @@ function attachVolunteerForm() {
     }
 
     if (valid) {
-      showToast('Obrigado, Beto entrará em contato em breve!', 'success');
+      showToast('Obrigado, Beto entrará em contato em breve!');
       form.reset();
       plateGroup.style.display = 'none';
     }
