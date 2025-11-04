@@ -2,28 +2,34 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>VerdeVivo - ONG Ambiental</title>
-  <link rel="stylesheet" href="./src/css/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Beto Verde - ONG ambiental liderada por Beto, dedicada ao reflorestamento, educação e limpeza de rios." />
+  <title>Beto Verde - ONG Ambiental</title>
+  <link rel="stylesheet" href="./src/css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
 
   <header class="site-header" role="banner">
     <div class="container nav-inner">
-      <a class="brand" href="#/">VerdeVivo</a>
-
+      <a class="brand" href="#/" aria-label="Beto Verde - Início">
+        <strong>Beto</strong><span class="brand-light">Verde</span>
+      </a>
       <button id="btn-burger" class="burger" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu">
-        <span class="burger-box"><span class="burger-inner"></span></span>
+        <span class="burger-box">
+          <span class="burger-inner"></span>
+        </span>
       </button>
-
       <nav id="nav-menu" class="nav-menu" role="navigation" aria-label="Menu principal">
         <ul role="menubar">
           <li role="none"><a role="menuitem" href="#/">Início</a></li>
           <li role="none"><a role="menuitem" href="#/sobre">Sobre</a></li>
           <li role="none" class="has-submenu">
-            <button aria-haspopup="true" aria-expanded="false">Projetos</button>
-            <ul class="submenu" role="menu" aria-label="Projetos submenu">
+            <button aria-haspopup="true" aria-expanded="false" class="submenu-toggle">Projetos</button>
+            <ul class="submenu" role="menu" aria-label="Submenu de projetos">
               <li role="none"><a role="menuitem" href="#/projetos/reflorestamento">Reflorestamento</a></li>
               <li role="none"><a role="menuitem" href="#/projetos/educacao">Educação Ambiental</a></li>
               <li role="none"><a role="menuitem" href="#/projetos/limpeza">Limpeza de Rios</a></li>
@@ -42,63 +48,86 @@
 
   <footer class="site-footer" role="contentinfo">
     <div class="container">
-      <p>© VerdeVivo - ONG Ambiental</p>
+      <p>© <span id="current-year"></span> Beto Verde - ONG Ambiental. Todos os direitos reservados.</p>
+      <p class="footer-tagline">Com Beto, a natureza tem voz.</p>
     </div>
   </footer>
 
   <!-- Templates -->
   <script type="text/template" id="tpl-home">
     <section class="hero">
-      <h1>Protegendo a Natureza, Juntos</h1>
-      <p>Projetos de reflorestamento, educação e ação comunitária.</p>
+      <div class="hero-content">
+        <h1>Com Beto, a natureza <span class="highlight">respira</span></h1>
+        <p>Reflorestamento, educação ambiental e limpeza de rios com impacto real.</p>
+        <a href="#/voluntario" class="btn btn-primary">Quero ajudar</a>
+      </div>
     </section>
 
-    <section class="grid grid--projects">
-      {{#cards}}
-      <article class="card">
-        <img src="{{img}}" alt="{{title}}">
-        <div class="card-body">
-          <h3>{{title}}</h3>
-          <p>{{excerpt}}</p>
-          <div class="card-footer">
-            <span class="badge">{{badge}}</span>
-            <a class="btn" href="#/projetos/{{id}}">Saiba mais</a>
+    <section class="section">
+      <h2 class="section-title">Nossos Projetos</h2>
+      <div class="grid grid--projects">
+        {{#cards}}
+        <article class="card card--project">
+          <img src="{{img}}" alt="{{title}}" loading="lazy">
+          <div class="card-body">
+            <h3>{{title}}</h3>
+            <p>{{excerpt}}</p>
+            <div class="card-footer">
+              <span class="badge badge--{{badgeClass}}">{{badge}}</span>
+              <a class="btn btn-small" href="#/projetos/{{id}}">Saiba mais</a>
+            </div>
           </div>
-        </div>
-      </article>
-      {{/cards}}
+        </article>
+        {{/cards}}
+      </div>
     </section>
   </script>
 
   <script type="text/template" id="tpl-projeto">
-    <article class="project">
-      <h2>{{title}}</h2>
-      <img src="{{img}}" alt="{{title}}">
-      <p>{{body}}</p>
-      <button class="btn" data-open-modal="donate-modal">Quero ajudar</button>
+    <article class="project-detail">
+      <h1 class="project-title">{{title}}</h1>
+      <img src="{{img}}" alt="{{title}}" class="project-img" loading="lazy">
+      <div class="project-content">
+        <p>{{body}}</p>
+        <div class="project-actions">
+          <button class="btn btn-primary" data-open-modal="donate-modal">Quero doar</button>
+          <a href="#/voluntario" class="btn btn-outline">Ser voluntário</a>
+        </div>
+      </div>
     </article>
   </script>
 
   <script type="text/template" id="tpl-voluntario">
-    <section>
-      <h2>Seja Voluntário</h2>
-      <form id="volunteer-form" novalidate>
-        <label for="name">Nome</label>
-        <input id="name" name="name" required minlength="2" />
-        <div class="field-msg" aria-live="polite"></div>
+    <section class="section volunteer-section">
+      <h2>Seja Voluntário com Beto</h2>
+      <p class="lead">Faça parte da mudança. Sua ação faz a diferença.</p>
+      <form id="volunteer-form" class="form-volunteer" novalidate>
+        <div class="form-group">
+          <label for="name">Nome completo *</label>
+          <input id="name" name="name" type="text" required minlength="2" />
+          <div class="field-msg"></div>
+        </div>
 
-        <label for="email">E-mail</label>
-        <input id="email" name="email" type="email" required />
-        <div class="field-msg" aria-live="polite"></div>
+        <div class="form-group">
+          <label for="email">E-mail *</label>
+          <input id="email" name="email" type="email" required />
+          <div class="field-msg"></div>
+        </div>
 
-        <label><input type="checkbox" name="hasCar" id="hasCar"> Tenho carro disponível</label>
-        <div class="field-msg" aria-live="polite"></div>
+        <div class="form-group checkbox">
+          <label>
+            <input type="checkbox" name="hasCar" id="hasCar">
+            Tenho carro disponível
+          </label>
+        </div>
 
-        <label for="plate">Placa (se aplicável)</label>
-        <input id="plate" name="plate" />
-        <div class="field-msg" aria-live="polite"></div>
+        <div class="form-group" id="plate-group" style="display:none;">
+          <label for="plate">Placa do veículo</label>
+          <input id="plate" name="plate" type="text" placeholder="ABC-1234" />
+          <div class="field-msg"></div>
+        </div>
 
-        <button class="btn" type="submit">Enviar</button>
+        <button type="submit" class="btn btn-primary btn-lg">Enviar cadastro</button>
       </form>
     </section>
   </script>
@@ -106,10 +135,13 @@
   <!-- Modal -->
   <div id="donate-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
     <div class="modal-content" role="document">
-      <button class="modal-close" aria-label="Fechar">&times;</button>
+      <button class="modal-close" aria-label="Fechar modal">×</button>
       <h3>Contribua com o projeto</h3>
-      <p>Ajude com doações ou voluntariado local.</p>
-      <button class="btn modal-confirm">Quero doar</button>
+      <p>Ajude com doações ou voluntariado local. Todo apoio conta!</p>
+      <div class="modal-actions">
+        <button class="btn btn-primary modal-confirm">Quero doar</button>
+        <a href="#/voluntario" class="btn btn-outline">Ser voluntário</a>
+      </div>
     </div>
   </div>
 
@@ -119,6 +151,7 @@
   <!-- JS -->
   <script src="./src/js/app.js"></script>
   <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
     document.addEventListener('DOMContentLoaded', () => {
       if (typeof router === 'function') router();
     });
